@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="styles/form.css">
+   
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Login</h2>
+        <form action="/signin" method="POST">
+            <div class="container">
+                <div class="name">
+                    <input type="text" placeholder="Username" style="height:30px; width:300px" name="username">
+                </div>
+                <div class="password">
+                    <input type="password" placeholder="Password" name="password" style="height:30px; width:300px">
+                </div>
+                <div class="btn">
+                    <button type="submit" style="background-color:aquamarine; height:35px; width:308px;cursor: pointer">Log in</button>
+                </div>
+                <div class="signup-link">
+                  Don't Have Account? <a href="/signup">Create A New</a>
+               </div>
+            </div>
+        </form>
+    </div>
+
+    
+</body>
+</html>
