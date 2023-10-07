@@ -25,21 +25,33 @@ const LogInSchema = new mongoose.Schema({
 const collection = new mongoose.model("users", LogInSchema);
 
 const bucket1Schema = new mongoose.Schema({
+    name: {
+        type: String,
+        // required: true
+    },
     QualityOfTheConference: {
         type: Number,
         required: true
     },
     Level: {
-        type: Number
+        type: Number,
+        required: true
     },
     Authorship: {
-        type: Number
+        type: Number,
+        required: true
     },
     TypeOfReview: {
-        type: Number
+        type: Number,
+        required: true
     },
     TyprOfRepresentation: {
-        type: Number
+        type: Number,
+        required: true
+    },
+    total: {
+        type: Number,
+        required: true
     }
 });
 

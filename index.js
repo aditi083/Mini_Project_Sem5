@@ -5,7 +5,6 @@ import ejs from "ejs";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { collection, collection1} from "./mongodb.js";
-import { getSelectValue } from './bucket.js';
 
 const app = express();
 const port = 3000;
@@ -71,27 +70,76 @@ app.post("/signin", async (req, res)=>{
 });
 
 app.post("/save", async (req, res)=> {
-    const { selectedOption } = req.body;
+    const { selectedOption1 } = req.body;
+    const { selectedOption2 } = req.body;
+    const { selectedOption3 } = req.body;
+    const { selectedOption4 } = req.body;
+    const { selectedOption5 } = req.body;
     
-    let a = -1;
-    if( selectedOption == 1){
+    let a = -1, b=-1, c=-1, d=-1, e=-1;
+    if( selectedOption1 == 1){
         a = 1.5;
-    } else if(selectedOption == 2){
+    } else if(selectedOption1 == 2){
         a = 0.9;
-    } else if(selectedOption == 3){
+    } else if(selectedOption1 == 3){
         a = 0.5;
     } else{
         a = 0
     }
 
+    if(selectedOption2 == 1){
+        b = 1.25;
+    } else if(selectedOption2 == 2){
+        b = 1;
+    } else if(selectedOption2 == 3){
+        b = 0.8
+    } else{
+        b = 0
+    }
+
+    if(selectedOption3 == 1){
+        c = 1;
+    } else if(selectedOption3 == 2){
+        c = 0.8;
+    } else{
+        c = 0;
+    }
+
+    if(selectedOption4 == 1){
+        d = 1;
+    } else if(selectedOption4 == 2){
+        d = 0.8;
+    } else{
+        d = 0;
+    } 
+
+    if(selectedOption5 == 1){
+        e = 1;
+    } else if(selectedOption5 == 0.5){
+        e = 0.5;
+    } else{
+        e = 0;
+    }
+
+    const sum = a+b+c+d+e;
+
     const bucket = {
-        QualityOfTheConference: a
+        QualityOfTheConference: a,
+        Level: b,
+        Authorship: c,
+        TypeOfReview: d,
+        TyprOfRepresentation: e,
+        total: sum
     } 
 
     const bucketdata = await collection1.insertMany(bucket);
     console.log(bucketdata);
-    // console.log('Selected option:', selectedOption)
+    // console.log('Selected option:', selectedOption
     
+})
+
+app.get("/save", (req, res)=>{
+    res.render("index.ejs");
 })
 
 app.listen(port, () => {

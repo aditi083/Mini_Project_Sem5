@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/bucket1.css">
+    
+    <style>
+       .option-list{
+        height:2rem;
+        width: 10rem;   
+       }  
+    </style>
+
+
+</head>
+<body>
+    <div class="container">
+        <form action="/save" method="post">
+            <div class="criteria"><p>Quality of the conference</p>
+                <select name="selectedOption1" class="option-list" id="select1" required>
+                    <option value="">Select Option</option>
+                    <option value="1" required>Conference by IEEE/Springer/ACM or Equivalent/INDAM/IIMs/IITs</option>
+                    <option value="2" required>State college + AICTE/IEEE/ISTE or equivalent etc</option>
+                    <option value="3" required>University sponsored or equivalent</option>
+                    <option value="4" required>Any Other</option>
+                </select>
+            </div>
+            <div class="criteria"><p>Level</p>
+                <select name="selectedOption2" class="option-list" id="select2" required>
+                    <option value="">Select Option</option>
+                    <option value="1" required>International</option>
+                    <option value="2" required>National</option>
+                    <option value="3" required>State</option>
+                    <option value="4" required>Any Other</option>
+                </select>
+            </div>
+            <div class="criteria"><p>Authorship</p>
+                <select name="selectedOption3" class="option-list" id="select3" required>
+                    <option value="">Select Option</option>
+                    <option value="1" required>Author</option>
+                    <option value="2" required>Co-Author</option>
+                </select>
+            </div>
+            <div class="criteria"><p>Type of Review</p>
+                <select name="selectedOption4" class="option-list" id="select4" required>
+                    <option value="">Select option</option>
+                    <option value="1" required>Referred/Peer Review</option>
+                    <option value="2" required>Non-Referred</option>
+                </select>
+            </div>
+            <div class="criteria"><p>Type of presentation</p>
+                <select name="selectedOption5" class="option-list" id="'select5" required>
+                    <option value="">Select option</option>
+                    <option value="1" required>Oral</option>
+                    <option value="2" required>Poster</option>
+                </select>
+            </div>
+            <div class="saveButton">
+                <button>Save</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
