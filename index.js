@@ -20,12 +20,20 @@ app.get("/", (req, res) => {
    res.render("login.ejs");
 });
 
-app.get("/signup", (req, res)=>{
+app.post("/signup", (req, res)=>{
     res.render("signup.ejs");
 });
 
-app.get("/bucket1.ejs", (req, res)=> {
+app.post("/bucket1.ejs", (req, res)=> {
     res.render("bucket1.ejs");
+});
+
+app.post("/bucket2.ejs", (req, res)=>{
+    res.render("bucket2.ejs");
+});
+
+app.post("/bucket3.ejs", (req, res)=>{
+    res.render("bucket3.ejs");
 });
 
 app.post("/signup", async (req, res)=>{
@@ -136,6 +144,10 @@ app.post("/save", async (req, res)=> {
     console.log(bucketdata);
     // console.log('Selected option:', selectedOption
     
+})
+
+app.post("/viewmore", (req, res)=>{
+    res.render("bucket1.ejs");
 })
 
 app.get("/save", (req, res)=>{
