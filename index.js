@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
    res.render("login.ejs");
 });
 
-app.post("/signup", (req, res)=>{
+app.get("/signup", (req, res)=>{
     res.render("signup.ejs");
 });
 
