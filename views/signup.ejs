@@ -1,33 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" type="text/css" href="styles/signup.css">
+  <script src="https://kit.fontawesome.com/754fd7ceb0.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-box">
+      <h1 id="title">Sign Up</h1>
+      <form action="/signup" method="POST">
+        <div class="input-group">
+          <div class="name" id="nameField">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" placeholder="Username" name="username">
+          </div>
+
+          <div class="password">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Password" name="password">
+          </div>
+          <div class="confirmpassword">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Confirm Password" name="confirmpassword">
+          </div>
+          <div class="btn">
+            <button type="submit" value="signup" id="signupBtn">Sign up</button>
+          </div>
+      </form>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="styles/form.css">
-   
+    <title>Signup</title>
+    <link rel="stylesheet" type="text/css" href="styles/signup.css">
+    <script src="https://kit.fontawesome.com/754fd7ceb0.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <div class="wrapper">
-        <h2>Sign Up</h2>
+    <div class="container">
+      <div class="form-box">
+        <h1 id="title">Sign Up</h1>
         <form action="/signup" method="POST">
-            <div class="container">
-                <div class="name">
-                    <input type="text" placeholder="Username" style="height:30px; width:300px" name="name">
-                </div>
-                <div class="password">
-                    <input type="password" placeholder="Password" name="password" style="height:30px; width:300px">
-                </div>
-                <div class="confirmpassword">
-                    <input type="password" placeholder="Confirm Password" name="confirmpassword" style="height:30px; width:300px" >
-                </div>
-                <div class="btn">
-                    <button type="submit" value="signup" style="background-color:aquamarine; height:35px; width:308px;cursor: pointer">Sign Up</button>
-                </div>
+            <div class="input-group">
+              <div class="input-field" id="nameField">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" placeholder="Username">
             </div>
+
+            <div class="input-field">
+              <i class="fa-solid fa-lock"></i>
+                  <input type="password" placeholder="Password">
+          </div>
+                <div class="input-field">
+                  <i class="fa-solid fa-lock"></i>
+                      <input type="password" placeholder="Confirm Password">
+              </div>
+              <div class="btn-field">
+                <button type="button" id="signupBtn">Sign up</button>                
+              </div>
         </form>
-    </div>
+      </div>
+  </div>
 
     
 </body>
-</html>
+</html> -->

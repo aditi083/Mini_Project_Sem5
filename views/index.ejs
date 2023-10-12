@@ -18,7 +18,9 @@
       <div class="sub-menu">
         <div class="user-info">
           <img src="/images/user.png">
-          <h3>James Aldrino</h3>
+          <% if(locals){%>
+          <h3><%= name %></h3>
+          <% } %>
         </div>
         <hr>
         <a href="#" class="sub-menu-link">
@@ -31,7 +33,7 @@
           <p>Settings & Privacy</p>
           <span>></span>
         </a>
-        <a href="#" class="sub-menu-link">
+        <a href="login.ejs" class="sub-menu-link">
           <img src="/images/logout.png">
           <p>logout</p>
           <span>></span>

@@ -5,19 +5,19 @@ import ejs from "ejs";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { collection, collection1} from "./mongodb.js";
+import { getUsernameFromSession } from './auth.js';
 
 const app = express();
 const port = 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 
 app.get("/", (req, res) => {
-   res.render("login.ejs");
+   res.render("signin.ejs");
 });
 
 app.get("/signup", (req, res)=>{
@@ -38,7 +38,7 @@ app.post("/bucket3.ejs", (req, res)=>{
 
 app.post("/signup", async (req, res)=>{
         const data = {
-            username: req.body.name,
+            username: req.body.username,
             password: req.body.password,
             confirmPassword: req.body.confirmpassword
         }
@@ -56,24 +56,28 @@ app.post("/signup", async (req, res)=>{
             const userdata = await collection.insertMany(data);
             console.log(userdata);
            }
-           res.render("login.ejs"); 
+           res.render("signin.ejs"); 
        }
 });
+
 
 app.post("/signin", async (req, res)=>{
     try{
         const check = await collection.findOne({username: req.body.username});
+        const name = req.body.username;
+        
         if(!check){
             res.send("user name cannot found");
         }
 
         if(check.password === req.body.password){
-            res.render("index.ejs");
+            res.render("index.ejs",{name: name});
         } else{
             res.send("Wrong Password");
         }
     } catch(error){
-        res.send(error);
+        console.error(error);
+        res.status(500).send("An error occurred");
     }
 });
 
@@ -83,7 +87,7 @@ app.post("/save", async (req, res)=> {
     const { selectedOption3 } = req.body;
     const { selectedOption4 } = req.body;
     const { selectedOption5 } = req.body;
-    
+   
     let a = -1, b=-1, c=-1, d=-1, e=-1;
     if( selectedOption1 == 1){
         a = 1.5;
@@ -141,51 +145,17 @@ app.post("/save", async (req, res)=> {
     } 
 
     const bucketdata = await collection1.insertMany(bucket);
-    console.log(bucketdata);
-    // console.log('Selected option:', selectedOption
-    
-})
+    console.log(bucketdata);  
+});
 
 app.post("/viewmore", (req, res)=>{
     res.render("bucket1.ejs");
 })
 
-app.get("/save", (req, res)=>{
+app.post("/save", (req, res)=>{
     res.render("index.ejs");
 })
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
-
-
-
-
-
-
-// import express from 'express';
-
-// const app = express();
-// const port = 3000;
-
-// // Middleware to parse form data
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
-
-// // Serve static files (including index.ejs)
-// app.use(express.static('public'));
-
-// app.get("/", (req, res) => {
-//     res.render("bucket1.ejs");
-// });
-
-// // Handle POST request
-// app.post('/save', (req, res) => {
-//     const { selectedOption } = req.body;
-//     console.log('Selected option:', selectedOption);
-//     res.redirect('/');
-// });
-
-// app.listen(port, () => {
-//     console.log(`Server is running on port ${port}`);
-// });
