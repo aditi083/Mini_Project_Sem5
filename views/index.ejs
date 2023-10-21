@@ -33,7 +33,7 @@
           <p>Settings & Privacy</p>
           <span>></span>
         </a>
-        <a href="login.ejs" class="sub-menu-link">
+        <a href="/logout" class="sub-menu-link">
           <img src="/images/logout.png">
           <p>logout</p>
           <span>></span>
@@ -56,9 +56,7 @@
         <p class="description">
           Papers published in National/International Conference.
         </p>
-       <form action="/viewmore" method="post">
-        <button class="button"><a href="bucket1.ejs"></a>View More</button>
-       </form>
+        <button class="button"><a href="/bucket1">View More</a></button>
       </div>
     </div>
     <div class="card">
@@ -74,9 +72,7 @@
         <p class="description">
           Papers published in National/International Journal 
         </p>
-        <form action="/viewmore" method="post">
-          <button class="button"><a href="bucket1.ejs"></a>View More</button>
-         </form>
+        <button class="button"><a href="/bucket2">View More</a></button>
       </div>
     </div>
     <div class="card">
@@ -92,9 +88,7 @@
         <p class="description">
           Fellowship received for National/International Conference
         </p>
-        <form action="/viewmore" method="post">
-          <button class="button"><a href="bucket3.ejs"></a>View More</button>
-         </form>
+        <button class="button"><a href="/bucket3">View More</a></button>
       </div>
     </div>
   </div>
@@ -105,6 +99,14 @@
     let subMenu = document.getElementById("subMenu");
     function toggleMenu() {
       subMenu.classList.toggle("open-menu");
+    }
+
+    function clearSelectTags() {
+        // Clear all select tags
+        const selectTags = document.getElementsByTagName('select');
+        for (let selectTag of selectTags) {
+            selectTag.selectedIndex = -1; // Reset the selected index
+        }
     }
   </script>
 </body>

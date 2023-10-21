@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="bucket2.css">
+    <link rel="stylesheet" href="/styles/bucket.css">
     
     <style>
        .option-list{
@@ -13,63 +13,58 @@
        }  
     </style>
 
-
 </head>
 <body>
     <div class="container">
-        <div class="criteria"><p>Quality of the Journal</p>
-           
-            <select name="one" class="option-list" required>
-                
-                <option value="">Select option</option>
-                <option value="1" required>Journal indexed by Scopus/Web of science/ICI/ABDC/FT45</option>
-                <option value="2" required>Journal published with UGC approved/ISBN/ISSN no.</option>
-                <option value="3" required>None</option>
-                
-            </select>
-        </div>
-        <div class="criteria"><p>Journal with impact factor</p>
-            <select name="two" class="option-list" required>
-                <option value="">Select option</option>
-                <option value="1" required>Greater than 3</option>
-                <option value="2" required>Between 1 to 3</option>
-                <option value="3" required>Less than 1</option>
-            </select>
-        </div>
-        <div class="criteria"><p>Level</p>
-            <select name="two" class="option-list" required>
-                <option value="">Select option</option>
-                <option value="1" required>International</option>
-                <option value="2" required>National</option>
-                <option value="3" required>State</option>
-                <option value="4" required>Any Other</option>
-            </select>
-        </div>
-        <div class="criteria"><p>Authorship</p>
-            <select name="three" class="option-list" required>
-                <option value="">Select option</option>
-                <option value="1" required>Author</option>
-                <option value="2" required>Co-Author</option>
-            </select>
-        </div>
-        <div class="criteria"><p>Type of Review</p>
-            <select name="four" class="option-list" required>
-                <option value="">Select option</option>
-                <option value="1" required>Referred/Peer Review</option>
-                <option value="2" required>Non-Referred</option>
-            </select>
-        </div>
-        <div class="criteria"><p>Availability in the form of</p>
-            <select name="five" class="option-list" required>
-                <option value="">Select option</option>
-                <option value="1" required>Hardcopy journal</option>
-                <option value="2" required>E-journal</option>
-            </select>
-        </div>
         <form action="/save" method="post">
-            <div>
-                <button>Save</button>
+            <div class="criteria"><p>Quality of the Journal</p>
+                <select name="selectedOption1" class="option-list" required>
+                    <option value="">Select option</option>
+                    <option value="1" required>Journal indexed by Scopus/Web of science/ICI/ABDC/FT45</option>
+                    <option value="2" required>Journal published with UGC approved/ISBN/ISSN no.</option>
+                    <option value="3" required>None</option>
+                    
+                </select>
             </div>
+            <div class="criteria"><p>Journal with impact factor</p>
+                <select name="selectedOption2" class="option-list" required>
+                    <option value="">Select option</option>
+                    <option value="1" required>Greater than 3</option>
+                    <option value="2" required>Between 1 to 3</option>
+                    <option value="3" required>Less than 1</option>
+                </select>
+            </div>
+            <div class="criteria"><p>Level</p>
+                <select name="selectedOption3" class="option-list" required>
+                    <option value="">Select option</option>
+                    <option value="1" required>International</option>
+                    <option value="2" required>National</option>
+                    <option value="3" required>State</option>
+                    <option value="4" required>Any Other</option>
+                </select>
+            </div>
+            <div class="criteria"><p>Authorship</p>
+                <select name="selectedOption4" class="option-list" required>
+                    <option value="">Select option</option>
+                    <option value="1" required>Author</option>
+                    <option value="2" required>Co-Author</option>
+                </select>
+            </div>
+            <div class="criteria"><p>Type of Review</p>
+                <select name="selectedOption5" class="option-list" required>
+                    <option value="">Select option</option>
+                    <option value="1" required>Referred/Peer Review</option>
+                    <option value="2" required>Non-Referred</option>
+                </select>
+            </div>
+            <div class="criteria"><p>Availability in the form of</p>
+                <select name="selectedOption6" class="option-list" required>
+                    <option value="">Select option</option>
+                    <option value="1" required>Hardcopy journal</option>
+                    <option value="2" required>E-journal</option>
+                </select>
+            </div>
+            <button>Save</button>    
         </form>
     </div>
 </body>

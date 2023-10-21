@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="bucket3.css">
+    <link rel="stylesheet" href="/styles/bucket.css">
     
     <style>
        .option-list{
@@ -17,39 +17,35 @@
 </head>
 <body>
     <div class="container">
-        <div class="criteria"><p>Quality of the conference</p>
-           
-            <select name="one" class="option-list" required>
-                <option value="">Select option</option>
-                <option value="1" required>Conference by IEEE/Springer/ACM or Equivalent/INDAM/IIMs/IITs</option>
-                <option value="2" required>State college + AICTE/IEEE/ISTE or equivalent etc</option>
-                <option value="3" required>Conference by State college + IEEE or equivalent sponsored</option>
-                <option value="4" required>University sponsored or equivalent</option>
-                <option value="5" required>Any Other</option>
-            </select>
-        </div>
-        <div class="criteria"><p>Level</p>
-            <select name="two" class="option-list" required>
-                <option value="">Select option</option>
-                <option value="1" required>International</option>
-                <option value="2" required>National</option>
-                <option value="3" required>State</option>
-                <option value="4" required>Any Other</option>
-            </select>
-        </div>
-        <div class="criteria"><p>Amount of waiver in Registration fess</p>
-            <select name="three" class="option-list" required>
-                <option value="">Select option</option>
-                <option value="1" required>100% of the conference registration fees</option>
-                <option value="2" required>80% of the conference registration fees</option>
-                <option value="3" required>60% of the conference registration fees</option>
-            </select>
-        </div>
-        
         <form action="/save" method="post">
-            <div>
-                <button>Save</button>
+            <div class="criteria"><p>Quality of the conference</p>
+                <select name="selectedOption1" class="option-list" required>
+                    <option value="">Select option</option>
+                    <option value="1" required>Conference by IEEE/Springer/ACM or Equivalent/INDAM/IIMs/IITs</option>
+                    <option value="2" required>State college + AICTE/IEEE/ISTE or equivalent etc</option>
+                    <option value="3" required>Conference by State college + IEEE or equivalent sponsored</option>
+                    <option value="4" required>University sponsored or equivalent</option>
+                    <option value="5" required>Any Other</option>
+                </select>
             </div>
+            <div class="criteria"><p>Level</p>
+                <select name="selectedOption2" class="option-list" required>
+                    <option value="">Select option</option>
+                    <option value="1" required>International</option>
+                    <option value="2" required>National</option>
+                    <option value="3" required>State</option>
+                    <option value="4" required>Any Other</option>
+                </select>
+            </div>
+            <div class="criteria"><p>Amount of waiver in Registration fess</p>
+                <select name="selectedOption3" class="option-list" required>
+                    <option value="">Select option</option>
+                    <option value="1" required>100% of the conference registration fees</option>
+                    <option value="2" required>80% of the conference registration fees</option>
+                    <option value="3" required>60% of the conference registration fees</option>
+                </select>
+            </div>
+            <button>Save</button>
         </form>
     </div>
 </body>

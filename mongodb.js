@@ -1,9 +1,10 @@
 import mongoose, { model } from "mongoose";
+import jwt from "jsonwebtoken";
 mongoose.connect("mongodb://0.0.0.0:27017/credentialsdb")
 .then(() =>{
     console.log("mongodb connected");
 })
-.catch(()=>{
+.catch((e)=>{
     console.log("failed to connect")
 })
 
@@ -19,8 +20,15 @@ const LogInSchema = new mongoose.Schema({
     confirmPassword: {
         type: String,
         required: true
-    }
+    },
+    tokens: [{
+        token:{
+            type: String,
+            required: true
+        }
+    }]
 });
+
 
 const collection = new mongoose.model("users", LogInSchema);
 
