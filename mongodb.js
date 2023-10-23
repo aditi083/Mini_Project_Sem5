@@ -35,7 +35,11 @@ const collection = new mongoose.model("users", LogInSchema);
 const bucket1Schema = new mongoose.Schema({
     name: {
         type: String,
-        // required: true
+        required: true
+    },
+    TypeOfBucket:{
+        type: String,
+        required: true
     },
     QualityOfTheConference: {
         type: Number,
@@ -65,4 +69,74 @@ const bucket1Schema = new mongoose.Schema({
 
 const collection1 = new mongoose.model("bucket1", bucket1Schema);
 
-export { collection, collection1 };
+const bucket2Schema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    TypeOfBucket:{
+        type: String,
+        required: true
+    },
+    QualityOfTheJournal: {
+        type: Number,
+        required: true
+    },
+    JournalWithImpactFactor: {
+        type: Number,
+        required: true
+    },
+    Level: {
+        type: Number,
+        required: true
+    },
+    Authorship:{
+        type: Number,
+        required: true
+    },
+    TypeOfReview: {
+        type: Number,
+        required: true
+    },
+    AvailabilityInTheFormOf: {
+        type: Number,
+        required: true
+    },
+    total: {
+        type: Number,
+        required: true
+    }
+});
+
+const collection2 = new mongoose.model("bucket2", bucket2Schema);
+
+const bucket3Schema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    TypeOfBucket:{
+        type: String,
+        required: true
+    },
+    QualityOfTheConference: {
+        type: Number,
+        required: true
+    },
+    Level: {
+        type: Number,
+        required: true
+    },
+    AmountOfWaiverInRegistrationFees: {
+        type: Number,
+        required: true
+    },
+    total: {
+        type: Number,
+        required: true
+    }
+});
+
+const collection3 = new mongoose.model("bucket3", bucket3Schema);
+
+export { collection, collection1, collection2, collection3};

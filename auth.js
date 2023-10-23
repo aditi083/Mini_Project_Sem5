@@ -1,23 +1,22 @@
-// auth.js (an ES6 module)
+import jwt from 'jsonwebtoken';
+import { collection, collection1} from "./mongodb.js";
 
-// Function to retrieve the username from the session
-export async function getUsernameFromSession() {
-    try {
-      const response = await fetch('/login', {
-        method: 'GET',
-        credentials: 'include', // Include cookies in the request
-      });
-  
-      if (response.ok) {
-        const data = await response.json();
-        return data.username;
-      } else {
-        console.error('Failed to retrieve username:', response.statusText);
-        return null;
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      return null;
+
+const auth = async (req, res, next) => {
+    try{
+        const token = req.cookies.jwt;
+        const verifyUser = jwt.verify(token, process.env.SECRET_KEY);
+        const user = await  collection.findOne({_id: verifyUser._id});
+        console.log(user);
+        console.log(verifyUser);
+
+        req.token = token;
+        req.user = user;
+        
+        next();
+    } catch(error) {
+        res.status(401).send(error);
     }
-  }
-  
+}
+
+export {auth};
