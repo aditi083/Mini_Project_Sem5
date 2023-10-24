@@ -32,6 +32,10 @@ app.get("/signup", (req, res)=>{
     res.render("signup.ejs");
 });
 
+app.get("/index", auth, (req, res)=> {
+    const name = req.user.name;
+    res.render("index.ejs", {name: name});
+})
 app.get("/bucket1" , auth,(req, res)=>{
     res.render("bucket1.ejs");
 });
@@ -131,8 +135,67 @@ app.get("/profile", auth, async (req, res)=> {
     const count1 = await collection1.countDocuments({ name: name, TypeOfBucket: bucketType1 });
     const count2 = await collection2.countDocuments({ name: name, TypeOfBucket: bucketType2 });
     const count3 = await collection3.countDocuments({ name: name, TypeOfBucket: bucketType3 });
+
+    const usernameToFind = name;
+
+    const result1 = await collection1.aggregate([
+        {
+            $match: { name: usernameToFind }
+        },
+        {
+            $group: {
+                _id: "$name",
+                totalSum1: { $sum: "$total" }
+            }
+        }
+    ]);
+
+    let totalSum1 = 0;
+        if (result1.length > 0) {
+            totalSum1 = result1[0].totalSum1;
+        }
     
-    res.render("profile.ejs",{name:name1, count1: count1, count2: count2, count3: count3, email:email, phoneNumber: phone, designation: designation});
+
+    const result2 = await collection2.aggregate([
+    {
+        $match: { name: usernameToFind }
+            
+    },
+        {
+            $group: {
+                _id: "$name",
+                totalSum2: { $sum: "$total" }
+            }
+        }
+    ]);
+    
+    let totalSum2 = 0;
+    if (result2.length > 0) {
+        totalSum2 = result2[0].totalSum2;
+    }
+
+    const result3 = await collection3.aggregate([
+        {
+            $match: { name: usernameToFind }
+        },
+        {
+            $group: {
+                _id: "$name",
+                totalSum3: { $sum: "$total" }
+            }
+        }
+    ]);
+
+    let totalSum3 = 0;
+        if (result3.length > 0) {
+            totalSum3 = result1[0].totalSum3;
+        }
+    
+    console.log(totalSum1);
+    console.log(totalSum2);
+    console.log(totalSum3);
+
+    res.render("profile.ejs",{name:name1, count1: count1, count2: count2, count3: count3, email:email, phoneNumber: phone, designation: designation, totalSum1: totalSum1, totalSum2: totalSum2, totalSum3: totalSum3});
 })
 
 app.get("/logout", auth, async (req, res)=>{
@@ -217,7 +280,7 @@ app.post("/save1", auth, async (req, res)=> {
     try {
         const bucketdata = await collection1.insertMany(bucket);
         console.log(bucketdata);
-        res.send("<script>alert('You data is saved Successfully'); window.location.href = window.location.href; clearSelectTags();</script>"); 
+        res.send("<script>alert('You data is saved Successfully'); window.location.href = '/index'; clearSelectTags();</script>"); 
     } catch (error) {
         console.error(error);
     }
