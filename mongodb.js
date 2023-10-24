@@ -9,6 +9,26 @@ mongoose.connect("mongodb://0.0.0.0:27017/credentialsdb")
 })
 
 const LogInSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    designation:{
+        type: String,
+        required: true
+    },
+    mobileNumber: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    gender: {
+        type: String,
+        required: true
+    },
     username:{
         type: String,
         required: true

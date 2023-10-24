@@ -32,7 +32,6 @@ app.get("/signup", (req, res)=>{
     res.render("signup.ejs");
 });
 
-
 app.get("/bucket1" , auth,(req, res)=>{
     res.render("bucket1.ejs");
 });
@@ -56,6 +55,11 @@ app.post("/signup", async (req, res)=>{
        } else {
             if(req.body.password === req.body.confirmpassword){
                 const data = {
+                    name: req.body.name,
+                    designation: req.body.designation,
+                    mobileNumber: req.body.mobileNumber,
+                    email: req.body.email,
+                    gender: req.body.gender, 
                     username: req.body.username,
                     password: passwordHash,
                     confirmPassword: cpasswordHash,
@@ -116,6 +120,10 @@ app.post("/signin", async (req, res)=>{
 
 app.get("/profile", auth, async (req, res)=> {
     const name = req.user.username;
+    const name1 = req.user.name;
+    const email = req.user.email;
+    const phone = req.user.mobileNumber;
+    const designation = req.user.designation;
     const bucketType1 = "Papers published in National/International Conference";
     const bucketType2 = "Papers published in National/International Journal";
     const bucketType3 = "Fellowship received for National/International Conference";
@@ -123,11 +131,8 @@ app.get("/profile", auth, async (req, res)=> {
     const count1 = await collection1.countDocuments({ name: name, TypeOfBucket: bucketType1 });
     const count2 = await collection2.countDocuments({ name: name, TypeOfBucket: bucketType2 });
     const count3 = await collection3.countDocuments({ name: name, TypeOfBucket: bucketType3 });
-
-    console.log(count1);
-    console.log(count2);
-    console.log(count3);
-    res.render("profile.ejs",{name:name, count1: count1, count2: count2, count3: count3});
+    
+    res.render("profile.ejs",{name:name1, count1: count1, count2: count2, count3: count3, email:email, phoneNumber: phone, designation: designation});
 })
 
 app.get("/logout", auth, async (req, res)=>{

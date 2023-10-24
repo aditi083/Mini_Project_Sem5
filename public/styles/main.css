@@ -249,3 +249,8 @@ body {
 .button:hover {
   background: #265df2;
 }
+
+.description>.button>a{
+  color: white;
+  text-decoration: none;
+}
