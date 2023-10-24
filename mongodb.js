@@ -9,6 +9,10 @@ mongoose.connect("mongodb://0.0.0.0:27017/credentialsdb")
 })
 
 const LogInSchema = new mongoose.Schema({
+    username:{
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
@@ -26,10 +30,6 @@ const LogInSchema = new mongoose.Schema({
         required: true
     },
     gender: {
-        type: String,
-        required: true
-    },
-    username:{
         type: String,
         required: true
     },

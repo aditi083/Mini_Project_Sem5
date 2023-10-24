@@ -95,8 +95,8 @@ app.post("/signin", async (req, res)=>{
         const name = req.body.username;
         const password = req.body.password;
 
-        const isMatch = bcrypt.compare(password, check.password);
-        
+        const isMatch = await bcrypt.compare(password, check.password);
+        console.log(isMatch);
         if(!check){
             res.send("user name cannot found");
         }
