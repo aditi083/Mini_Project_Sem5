@@ -367,7 +367,7 @@ app.post("/save2", auth, async (req, res)=> {
     try {
         const bucketdata = await collection2.insertMany(bucket);
         console.log(bucketdata);
-        res.send("<script>alert('You data is saved Successfully'); window.location.href = window.location.href; clearSelectTags();</script>"); 
+        res.send("<script>alert('You data is saved Successfully'); window.location.href = '/index'; clearSelectTags();</script>"); 
     } catch (error) {
         console.error(error);
     }
@@ -426,7 +426,7 @@ app.post("/save3", auth, async (req, res)=> {
     try {
         const bucketdata = await collection3.insertMany(bucket);
         console.log(bucketdata);
-        res.send("<script>alert('You data is saved Successfully'); window.location.href = window.location.href; clearSelectTags();</script>"); 
+        res.send("<script>alert('You data is saved Successfully'); window.location.href = '/index'; clearSelectTags();</script>"); 
     } catch (error) {
         console.error(error);
     }
