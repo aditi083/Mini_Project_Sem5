@@ -73,7 +73,7 @@ app.post("/signup", async (req, res)=>{
                 const token = generateAuthToken(data);
                 data.tokens.push({ token });
 
-                res.cookie("jwt", token, {expires: (new Date(Date.now() + 600000)), httpOnly: true}); 
+                res.cookie("jwt", token, {expires: (new Date(Date.now() + 1800000)), httpOnly: true}); 
 
                 const userdata = await collection.insertMany(data);
                 console.log(token);
@@ -109,7 +109,7 @@ app.post("/signin", async (req, res)=>{
             const token = generateAuthToken(check);
             console.log(token)
 
-            res.cookie('jwt', token, {expires: (new Date(Date.now() + 600000)), httpOnly: true});
+            res.cookie('jwt', token, {expires: (new Date(Date.now() + 1800000)), httpOnly: true});
 
 
             res.render("index.ejs",{name: name, token: token});
@@ -188,7 +188,7 @@ app.get("/profile", auth, async (req, res)=> {
 
     let totalSum3 = 0;
         if (result3.length > 0) {
-            totalSum3 = result1[0].totalSum3;
+            totalSum3 = result3[0].totalSum3;
         }
     
     console.log(totalSum1);
